@@ -1,0 +1,1277 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}</style></head><body><title>Campus Sleep Capsules</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout concept: stacked rounded "cards" that move from night to day. The capsule (stadium) shape repeats in nav, buttons, pills and diagrams. */
+:root{
+  --night-950:#0A0F22; --night-900:#10172F; --night-800:#18224A; --night-700:#222E5E;
+  --lav-300:#B9B0F0; --lav-400:#9A8FE6; --violet:#4B3FB5;
+  --gold:#EDBB74; --gold-soft:#F6D9A8; --peach:#F3D3B4;
+  --cream:#F8F3EB; --sand:#EFE7D8; --ink:#1B2340; --ink-2:#4B5578;
+  --line-l:#E3D9C7; --line-d:rgba(255,255,255,.12);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --rx:clamp(36px,6vw,84px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night-950);color:var(--cream);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night-950)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+.ico{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+/* progress + nav */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--lav-400),var(--gold))}
+.nav{position:fixed;z-index:50;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);width:min(1100px,calc(100% - 32px));display:flex;align-items:center;gap:20px;padding:8px 8px 8px 22px;border-radius:999px;background:rgba(14,20,44,.66);border:1px solid var(--line-d);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);color:var(--cream)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;font-weight:500;text-decoration:none;white-space:nowrap}
+.brand svg{width:34px;height:20px;flex:none}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{display:block;padding:8px 14px;border-radius:999px;font-size:15px;text-decoration:none;color:#C9CFE6;transition:background .3s,color .3s}
+.nav ul a:hover{background:rgba(255,255,255,.08);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:1px solid transparent;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#1A1F3C;box-shadow:0 10px 30px -10px rgba(237,187,116,.6)}
+.btn-gold:hover{box-shadow:0 16px 36px -10px rgba(237,187,116,.7)}
+.btn-ghost{border-color:rgba(255,255,255,.28);color:var(--cream)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.nav .btn{padding:10px 20px;font-size:15px}
+.nav ul + .btn{margin-left:0}
+@media (max-width:900px){.nav ul{display:none}.nav .btn{margin-left:auto}}
+
+/* sections as stacked rounded cards */
+.sec{position:relative;border-radius:var(--rx) var(--rx) 0 0;margin-top:calc(var(--rx) * -1);padding-top:calc(var(--rx) + clamp(56px,8vw,100px));padding-bottom:calc(var(--rx) + clamp(48px,7vw,90px));box-shadow:0 -24px 60px -30px rgba(0,0,0,.45)}
+.day{--fg:var(--ink);--fg2:var(--ink-2);--line:var(--line-l);--card:#FFFDF8;--eye:var(--violet);--acc:var(--violet);background:var(--cream);color:var(--ink)}
+.sand{--fg:var(--ink);--fg2:var(--ink-2);--line:#DACFBB;--card:#FBF7EF;--eye:var(--violet);--acc:var(--violet);background:var(--sand);color:var(--ink)}
+.night{--fg:var(--cream);--fg2:#B9C0DE;--line:var(--line-d);--card:rgba(255,255,255,.045);--eye:#B4A8FF;--acc:var(--gold);background:var(--night-900);color:var(--cream)}
+.dusk{--fg:var(--cream);--fg2:#B9C0DE;--line:var(--line-d);--card:rgba(255,255,255,.06);--eye:#B4A8FF;--acc:var(--gold);background:linear-gradient(180deg,#222E6B 0%,#16204F 100%);color:var(--cream)}
+.dawn{--fg:var(--ink);--fg2:#4B5578;--line:rgba(27,35,64,.14);--card:rgba(255,253,248,.7);--eye:var(--violet);--acc:var(--violet);background:linear-gradient(180deg,#F3D3B4 0%,#F6E3CC 38%,#F8F3EB 100%);color:var(--ink)}
+.deep{--fg:var(--cream);--fg2:#A9B1D3;--line:var(--line-d);--eye:#B4A8FF;--acc:var(--gold);background:var(--night-950);color:var(--cream)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--eye)}
+.eyebrow::before{content:"";width:26px;height:10px;border-radius:999px;background:currentColor;opacity:.7}
+h2{font-size:clamp(34px,4.8vw,62px);line-height:1.08;margin-top:16px;color:var(--fg)}
+h2 em,h1 em{font-style:italic;font-weight:400}
+.lead{font-size:clamp(18px,1.6vw,21px);line-height:1.6;color:var(--fg2);max-width:60ch;margin-top:20px}
+.head{max-width:760px}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+.js.no-reveal .reveal{opacity:1;transform:none}
+
+/* hero */
+.hero{position:relative;padding:clamp(120px,14vw,170px) 0 calc(var(--rx) + 70px);background:radial-gradient(1200px 700px at 78% 28%,rgba(111,99,217,.34),transparent 60%),radial-gradient(900px 600px at 8% 90%,rgba(237,187,116,.10),transparent 60%),linear-gradient(180deg,#0A0F22 0%,#10172F 100%);overflow:hidden;color:var(--cream)}
+.stars{position:absolute;inset:0;pointer-events:none}
+.stars i{position:absolute;border-radius:50%;background:#fff;opacity:.5;animation:tw var(--t,4s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+@keyframes tw{from{opacity:.12;transform:scale(.8)}to{opacity:.8;transform:scale(1.15)}}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;border:1px solid var(--line-d);background:rgba(255,255,255,.05);font-size:14px;color:#D5DAF0}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+h1{font-size:clamp(50px,7.6vw,104px);line-height:.98;font-weight:300;margin-top:26px;color:var(--cream)}
+h1 em{color:var(--gold)}
+.hero .lead{color:#C3CAE6;margin-top:26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:44px;padding:0;list-style:none;color:#AEB6D8;font-size:15px}
+.facts li{display:flex;align-items:center;gap:10px}
+.facts .ico{color:var(--gold)}
+.hero-art{position:relative;aspect-ratio:640/400;width:100%;max-width:700px;justify-self:end}
+.hero-art svg{width:100%;height:100%;overflow:visible;display:block}
+.pod-float{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.ring-spin{transform-origin:320px 200px;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.zz{font-family:var(--serif);font-style:italic;fill:#F6D9A8;opacity:0;animation:zz 5.4s ease-in-out infinite}
+.zz.b{animation-delay:1.7s}.zz.c{animation-delay:3.4s}
+@keyframes zz{0%{opacity:0;transform:translate(0,0)}25%{opacity:.9}100%{opacity:0;transform:translate(26px,-54px)}}
+.pulse{animation:pls 3.4s ease-in-out infinite}
+@keyframes pls{0%,100%{opacity:.45}50%{opacity:1}}
+.load{animation:load 1.1s var(--ease) both;animation-delay:var(--d,0s)}
+@keyframes load{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.ticker{position:relative;margin-top:clamp(44px,6vw,84px);overflow:hidden;border-block:1px solid var(--line-d);padding:16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-in{display:flex;width:max-content;animation:tick 46s linear infinite}
+.ticker:hover .ticker-in{animation-play-state:paused}
+.ticker span{display:inline-flex;align-items:center;gap:26px;padding-right:26px;font-family:var(--serif);font-style:italic;font-size:22px;color:#C3CAE6;white-space:nowrap}
+.ticker span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:.8}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-art{justify-self:center;margin-top:12px}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.pills{display:flex;flex-direction:column;gap:16px}
+.pillcard{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding:22px 30px 22px 22px;border-radius:999px;background:var(--card);border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.pillcard:nth-child(2){margin-left:clamp(0px,4vw,56px)}
+.pillcard:nth-child(3){margin-left:clamp(0px,8vw,112px)}
+.pillcard:hover{transform:translateX(6px);box-shadow:0 18px 40px -24px rgba(27,35,64,.45)}
+.pillcard .badge{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--acc);color:#fff}
+.pillcard .badge .ico{width:26px;height:26px}
+.pillcard h3{font-size:21px;color:var(--fg)}
+.pillcard p{font-size:16px;line-height:1.5;color:var(--fg2);margin-top:2px}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr}.pillcard{border-radius:36px}.pillcard:nth-child(n){margin-left:0}}
+
+/* gap */
+.day-card{margin-top:44px;padding:clamp(18px,3vw,34px);border-radius:36px;background:var(--card);border:1px solid var(--line)}
+.day-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.seg{display:inline-flex;padding:5px;border-radius:999px;background:rgba(27,35,64,.07);position:relative}
+.seg button{position:relative;z-index:1;border:0;background:none;padding:10px 20px;border-radius:999px;font-weight:700;font-size:15px;color:var(--ink-2);transition:color .3s}
+.seg button[aria-pressed="true"]{color:#fff}
+.seg .thumb{position:absolute;top:5px;bottom:5px;left:5px;border-radius:999px;background:var(--violet);transition:transform .5s var(--ease),width .5s var(--ease)}
+.tag{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2)}
+.track{display:grid;grid-template-columns:minmax(80px,.5fr) 3fr minmax(80px,.5fr);gap:12px;margin-top:26px;align-items:stretch}
+.blk{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:18px;border-radius:22px;background:var(--night-900);color:var(--cream);text-align:center}
+.blk small{color:var(--gold);font-weight:700;letter-spacing:.06em}
+.blk b{font-family:var(--serif);font-weight:500;font-size:20px}
+.gapzone{position:relative;min-height:230px;border-radius:26px;border:2px dashed #CBBFA9;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(75,63,181,.035) 0 14px,transparent 14px 28px);transition:background .6s,border-color .6s}
+.day-card[data-mode="capsule"] .gapzone{border-color:var(--violet);background:linear-gradient(135deg,#2A2F7A,#4B3FB5);border-style:solid}
+.state{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;padding:22px;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.s-cap{opacity:0;transform:translateY(16px);pointer-events:none;color:var(--cream)}
+.day-card[data-mode="capsule"] .s-today{opacity:0;transform:translateY(-16px);pointer-events:none}
+.day-card[data-mode="capsule"] .s-cap{opacity:1;transform:none;pointer-events:auto}
+.opts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.opt{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:#fff;border:1px solid var(--line-l);font-size:15px;color:var(--ink-2)}
+.state .note{font-size:15px;color:var(--ink-2);text-align:center}
+.napbig{display:flex;align-items:center;gap:16px;padding:16px 30px 16px 18px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);box-shadow:0 0 60px rgba(237,187,116,.25)}
+.napbig .moon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:var(--gold);color:#1A1F3C}
+.napbig b{font-family:var(--serif);font-weight:500;font-size:26px}
+.s-cap .opts .opt{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);color:#EEF0FB}
+.day-note{margin-top:20px;color:var(--fg2);font-size:16px;min-height:3.2em}
+@media (max-width:640px){.track{grid-template-columns:1fr}.blk{flex-direction:row;justify-content:center;gap:12px;padding:12px}.gapzone{min-height:300px}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.stat{padding:30px 30px 26px;border-radius:32px;background:var(--night-900);color:var(--cream);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(154,143,230,.35),transparent 70%)}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,72px);line-height:1;color:var(--gold)}
+.stat p{margin-top:14px;font-size:16px;color:#C3CAE6;line-height:1.5}
+.srcline{margin-top:18px;font-size:14px;color:var(--fg2)}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.pain{padding:28px;border-radius:30px;background:var(--card);border:1px solid var(--line)}
+.pain .ico{width:30px;height:30px;color:var(--acc)}
+.pain h3{font-size:24px;margin-top:14px;color:var(--fg)}
+.pain p{margin-top:8px;color:var(--fg2);font-size:16px}
+@media (max-width:860px){.pains{grid-template-columns:1fr}}
+
+/* inside the capsule */
+.inside-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(20px,3vw,40px);margin-top:44px;align-items:start}
+.stage-wrap{position:relative;border-radius:40px;padding:clamp(10px,2vw,22px);background:linear-gradient(160deg,#1A2358,#0F1637);border:1px solid var(--line-d)}
+.stage{position:relative;aspect-ratio:900/470;width:100%;--scent:#B9A5FF}
+.stage[data-scent="forest"]{--scent:#8FD1A4}
+.stage svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.part{transition:opacity .5s,filter .5s;opacity:.92}
+.stage[data-active] .part{opacity:.4}
+.stage[data-active="shell"] .p-shell,.stage[data-active="storage"] .p-storage,.stage[data-active="charging"] .p-charging,.stage[data-active="sound"] .p-sound,.stage[data-active="cooling"] .p-cooling,.stage[data-active="scent"] .p-scent,.stage[data-active="light"] .p-light,.stage[data-active="clean"] .p-clean,.stage[data-active="cabin"] .p-cabin,.stage[data-active="cabin"] .p-pj{opacity:1;filter:drop-shadow(0 0 9px rgba(237,187,116,.75))}
+.shellglow{opacity:0;transition:opacity .6s}
+.stage[data-active="shell"] .shellglow{opacity:1}
+.waves,.sp-g,.cone,.uv,.vib,.dawnfx{opacity:0;transition:opacity .6s}
+.stage.sound-on .waves,.stage[data-active="sound"] .waves{opacity:1}
+.waves path{animation:wv 2.2s ease-in-out infinite}
+.waves path:nth-child(2){animation-delay:.3s}.waves path:nth-child(3){animation-delay:.6s}
+@keyframes wv{0%,100%{opacity:.25}50%{opacity:1}}
+.stage.scent-on .sp-g{opacity:1}
+.sp{fill:var(--scent);animation:rise 4.4s ease-in infinite;animation-delay:var(--dl)}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}15%{opacity:.9}100%{transform:translate(var(--dx),-70px);opacity:0}}
+.wisps path{stroke-dasharray:6 10;animation:flow 3s linear infinite;opacity:.4;transition:opacity .5s}
+.stage[data-active="cooling"] .wisps path{opacity:1}
+@keyframes flow{to{stroke-dashoffset:-32}}
+.stage[data-active="light"] .cone{opacity:.55}
+.stage.waking .cone{animation:cone 9s ease-in-out forwards}
+.stage.waking .dawnfx{animation:dawn 9s ease-in-out forwards}
+@keyframes cone{0%{opacity:0}85%{opacity:.7}100%{opacity:.7}}
+@keyframes dawn{0%{opacity:0}85%{opacity:.34}100%{opacity:.34}}
+.stage[data-active="light"] .vib,.stage.waking .vib{opacity:1}
+.vib path{animation:vb .5s ease-in-out infinite alternate}
+.stage.waking .vib{opacity:0;animation:vbon 9s forwards}
+@keyframes vbon{0%,60%{opacity:0}68%,100%{opacity:1}}
+@keyframes vb{from{transform:translateX(-2px)}to{transform:translateX(2px)}}
+.stage[data-active="clean"] .uv{opacity:1;animation:uvp 2.4s ease-in-out infinite}
+@keyframes uvp{0%,100%{opacity:.35}50%{opacity:1}}
+.sheetnew{transform:translateX(105%)}
+.stage[data-active="clean"] .sheetnew{animation:sheet 4.8s var(--ease) infinite}
+@keyframes sheet{0%{transform:translateX(105%)}40%,75%{transform:translateX(0)}100%{transform:translateX(-105%)}}
+.zs{font-family:var(--serif);font-style:italic;fill:#F6D9A8;opacity:0;animation:zz 5.4s ease-in-out infinite}
+.hs{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid var(--gold);background:rgba(10,15,34,.72);padding:0;transition:transform .4s var(--ease),background .3s}
+.hs::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid var(--gold);opacity:0;animation:ring 2.6s ease-out infinite}
+@keyframes ring{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.5)}}
+.hs::before{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--gold)}
+.hs:hover{transform:scale(1.18)}
+.hs[aria-pressed="true"]{background:var(--gold)}
+.hs[aria-pressed="true"]::before{background:#1A1F3C}
+.hs[aria-pressed="true"]::after{display:none}
+.panel{padding:clamp(24px,3vw,34px);border-radius:36px;background:rgba(255,255,255,.05);border:1px solid var(--line-d);min-height:300px;position:sticky;top:96px}
+.panel .pic{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--gold);color:#1A1F3C}
+.panel .pic .ico{width:28px;height:28px}
+.panel h3{font-size:28px;margin-top:20px;color:var(--cream)}
+.panel p{margin-top:10px;color:#B9C0DE}
+.panel ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.panel li{display:flex;gap:10px;color:#DDE1F3;font-size:16px}
+.panel li::before{content:"";flex:none;width:18px;height:8px;margin-top:10px;border-radius:999px;background:var(--gold);opacity:.8}
+.swap{animation:swap .6s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hint{margin-top:14px;font-size:14px;color:#9AA3D0;display:flex;align-items:center;gap:10px}
+.hint i{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.controls{display:grid;grid-template-columns:repeat(3,auto);gap:14px 26px;justify-content:start;margin-top:18px;padding:18px 20px;border-radius:30px;background:rgba(255,255,255,.04);border:1px solid var(--line-d)}
+.ctl h4{margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9AA3D0;font-weight:700}
+.opts2{display:flex;flex-wrap:wrap;gap:8px}
+.opts2 button{padding:9px 16px;border-radius:999px;border:1px solid var(--line-d);background:transparent;color:#D5DAF0;font-size:15px;transition:background .3s,color .3s,border-color .3s}
+.opts2 button:hover{border-color:rgba(255,255,255,.35)}
+.opts2 button[aria-pressed="true"]{background:var(--gold);color:#1A1F3C;border-color:var(--gold);font-weight:700}
+.vol{display:flex;align-items:center;gap:10px;margin-top:10px;color:#9AA3D0;font-size:13px}
+input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;background:rgba(255,255,255,.18);width:140px;outline-offset:6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);border:0;box-shadow:0 0 0 5px rgba(237,187,116,.2)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);border:0}
+.fine{margin-top:12px;font-size:13px;color:#8F98C2}
+@media (max-width:980px){.inside-grid{grid-template-columns:1fr}.panel{position:static;min-height:0}.controls{grid-template-columns:1fr}}
+.rail{margin-top:clamp(56px,7vw,96px);display:grid;gap:30px}
+.rail-row{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start;padding-top:26px;border-top:1px solid var(--line-d)}
+.rail-row h3{font-size:24px;color:var(--gold);font-weight:400;font-style:italic}
+.rail-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.fcard{display:flex;gap:14px;padding:18px 20px;border-radius:26px;background:rgba(255,255,255,.045);border:1px solid var(--line-d);transition:transform .5s var(--ease),background .4s,border-color .4s}
+.fcard:hover{transform:translateY(-4px);background:rgba(255,255,255,.08);border-color:rgba(237,187,116,.45)}
+.fcard .ico{color:var(--gold);width:26px;height:26px;margin-top:2px}
+.fcard b{display:block;font-size:17px;color:var(--cream);font-weight:700}
+.fcard span{display:block;font-size:15px;line-height:1.5;color:#B9C0DE;margin-top:3px}
+@media (max-width:760px){.rail-row{grid-template-columns:1fr}}
+
+/* how it works */
+.how-grid{display:grid;grid-template-columns:minmax(280px,.8fr) 1.2fr;gap:clamp(24px,5vw,80px);margin-top:44px;align-items:start}
+.phone-col{position:sticky;top:96px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.phone{position:relative;width:292px;height:590px;border-radius:48px;padding:11px;background:#0A0F22;box-shadow:0 40px 80px -30px rgba(27,35,64,.65),inset 0 0 0 2px #2A3263}
+.phone::before{content:"";position:absolute;top:19px;left:50%;width:84px;height:22px;margin-left:-42px;border-radius:999px;background:#05081A;z-index:5}
+.screen{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:linear-gradient(180deg,#18224A,#0E1537);color:var(--cream)}
+.scr{position:absolute;inset:0;padding:54px 20px 22px;display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(14px) scale(.985);transition:opacity .6s var(--ease),transform .6s var(--ease);pointer-events:none}
+.scr.on{opacity:1;transform:none}
+.scr h4{margin:0;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.1}
+.scr small{font-size:12px;color:#9AA3D0;letter-spacing:.08em;text-transform:uppercase}
+.slot{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:14px}
+.slot b{font-size:16px}
+.slot.sel{border-color:var(--gold);background:rgba(237,187,116,.14)}
+.pbtn{margin-top:auto;padding:14px;border-radius:999px;background:var(--gold);color:#1A1F3C;text-align:center;font-weight:700;font-size:15px}
+.lockc{margin:10px auto 0;width:140px;height:140px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,rgba(237,187,116,.3),rgba(237,187,116,.05) 70%);border:2px solid var(--gold);color:var(--gold);box-shadow:0 0 50px rgba(237,187,116,.3)}
+.lockc .ico{width:56px;height:56px}
+.tg{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-radius:20px;background:rgba(255,255,255,.06);font-size:14px}
+.tg span{padding:5px 12px;border-radius:999px;background:rgba(237,187,116,.2);color:var(--gold-soft);font-size:13px;font-weight:700}
+.dial{position:relative;margin:6px auto 0;width:172px;height:172px;border-radius:50%;background:conic-gradient(#C9C1FA 0 25%,#7B6FE0 25% 92.5%,var(--gold) 92.5% 100%);display:grid;place-items:center}
+.dial::before{content:"";position:absolute;inset:14px;border-radius:50%;background:#10183F}
+.dial div{position:relative;text-align:center}
+.dial b{display:block;font-family:var(--serif);font-weight:400;font-size:40px;line-height:1}
+.dial span{font-size:12px;color:#9AA3D0}
+.sunr{margin:0 -20px;height:170px;background:radial-gradient(circle at 50% 100%,#F6D9A8 0 22%,#EDBB74 22% 34%,rgba(237,187,116,0) 62%),linear-gradient(180deg,#2A2F7A,#7B6FB0 70%,#E9B98A)}
+.cap{font-size:13px;color:var(--fg2);text-align:center;max-width:290px}
+.steps{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 26px;border-radius:32px;border:1px solid var(--line);background:transparent;transition:background .5s var(--ease),border-color .5s,transform .5s var(--ease),box-shadow .5s;opacity:.6}
+.step.on{opacity:1;background:var(--card);border-color:rgba(75,63,181,.4);transform:translateX(6px);box-shadow:0 22px 50px -30px rgba(27,35,64,.5)}
+.step .num{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:rgba(75,63,181,.12);color:var(--violet);font-family:var(--serif);font-style:italic;font-size:26px;transition:background .4s,color .4s}
+.step.on .num{background:var(--violet);color:#fff}
+.step h3{font-size:25px;color:var(--fg)}
+.step p{margin-top:6px;color:var(--fg2);font-size:16.5px}
+.session{margin-top:clamp(40px,5vw,64px)}
+.session h3{font-size:26px}
+.seg-bar{display:flex;gap:5px;margin-top:20px}
+.seg-bar div{border-radius:14px;padding:16px 18px;overflow:hidden}
+.seg-bar .a{flex:10;background:#C9C1FA;color:var(--ink)}
+.seg-bar .b{flex:27;background:var(--violet);color:#fff}
+.seg-bar .c{flex:3;background:var(--gold);color:#1A1F3C;min-width:54px;padding-inline:10px}
+.seg-bar div b{display:block;font-size:15px;white-space:nowrap}
+.seg-bar div span{font-size:13px;opacity:.85;white-space:nowrap}
+.seg-bar div{transform-origin:left;transition:transform 1.2s var(--ease);}
+.js .seg-bar:not(.in) div{transform:scaleX(0)}
+@media (max-width:900px){
+  .how-grid{grid-template-columns:1fr;gap:0}
+  .phone-col{top:78px;z-index:6;height:330px;background:var(--cream);padding-top:4px;margin-inline:-20px;overflow:hidden}
+  .phone{transform:scale(.55);transform-origin:top center;margin-bottom:-265px}
+  .cap{display:none}
+  .seg-bar div b{font-size:13px}.seg-bar div span{display:none}
+}
+
+/* planner */
+.plan{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(24px,4vw,56px);margin-top:44px;align-items:start}
+.pcard{padding:clamp(22px,3vw,36px);border-radius:40px;background:rgba(255,255,255,.07);border:1px solid var(--line-d)}
+.field{display:grid;gap:8px;margin-bottom:18px}
+.field label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#B4A8FF;font-weight:700}
+input[type=time]{font:inherit;font-size:26px;font-family:var(--serif);color:var(--cream);background:rgba(10,15,34,.45);border:1px solid var(--line-d);border-radius:999px;padding:12px 24px;width:100%;color-scheme:dark}
+.res h3{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);font-weight:400;line-height:1.15;color:var(--cream)}
+.res h3 em{color:var(--gold)}
+.res p{margin-top:10px;color:#C3CAE6}
+.bar{position:relative;height:74px;margin:26px 0 8px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line-d);overflow:hidden}
+.bar .nap{position:absolute;top:6px;bottom:6px;border-radius:999px;background:linear-gradient(90deg,#7B6FE0,#4B3FB5);display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;font-weight:700;font-size:12.5px;white-space:nowrap;overflow:hidden;transition:left .45s var(--ease),width .45s var(--ease);min-width:96px;box-shadow:0 0 30px rgba(123,111,224,.5)}
+.bar .nap svg{display:none}
+.bar .buf{position:absolute;top:6px;bottom:6px;right:6px;border-radius:999px;background:repeating-linear-gradient(135deg,rgba(237,187,116,.5) 0 6px,rgba(237,187,116,.2) 6px 12px)}
+.axis{display:flex;justify-content:space-between;font-size:14px;color:#9AA3D0}
+.quick{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.quick button{padding:10px 18px;border-radius:999px;border:1px solid var(--line-d);background:transparent;color:#D5DAF0;font-size:15px;transition:background .3s}
+.quick button:hover{background:rgba(255,255,255,.1)}
+.sl{margin-top:18px;display:grid;gap:8px}
+.sl input{width:100%}
+.sl label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#B4A8FF;font-weight:700}
+@media (max-width:900px){.plan{grid-template-columns:1fr}}
+
+/* who */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);margin-top:44px;align-items:stretch}
+.persona{position:relative;padding:clamp(28px,4vw,48px);border-radius:44px;background:var(--night-900);color:var(--cream);overflow:hidden}
+.persona::before{content:"";position:absolute;right:-90px;bottom:-90px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(255,255,255,.1);box-shadow:0 0 0 40px rgba(255,255,255,.03),0 0 0 80px rgba(255,255,255,.02)}
+.persona .tag{color:var(--gold)}
+.persona h3{font-size:clamp(34px,4vw,48px);margin-top:12px;font-weight:400}
+.persona p{margin-top:16px;color:#C3CAE6;font-size:18px;position:relative}
+.persona .needs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative}
+.persona .needs span{padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line-d);font-size:15px}
+.waves-list{display:grid;gap:14px}
+.wv{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:22px 26px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.rings{position:relative;width:64px;height:64px}
+.rings i{position:absolute;inset:0;margin:auto;border-radius:50%;border:2px solid var(--violet)}
+.rings i:nth-child(1){width:20px;height:20px;background:var(--violet)}
+.rings i:nth-child(2){width:42px;height:42px;opacity:.6}
+.rings i:nth-child(3){width:64px;height:64px;opacity:.3}
+.wv small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--violet)}
+.wv h3{font-size:22px;color:var(--fg)}
+.wv p{font-size:15.5px;color:var(--fg2);line-height:1.5;margin-top:2px}
+.numline{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding:20px 28px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.numline b{font-family:var(--serif);font-weight:500;font-size:34px;color:var(--violet)}
+.numline span{color:var(--fg2);font-size:16px}
+@media (max-width:900px){.who-grid{grid-template-columns:1fr}.wv{border-radius:36px}.numline{border-radius:36px}}
+
+/* science */
+.sci{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,4vw,60px);margin-top:44px;align-items:center}
+.ringbox{position:relative;width:min(340px,100%);aspect-ratio:1;margin-inline:auto}
+.ringbox svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,.1);stroke-width:9}
+.ring-fg{fill:none;stroke:var(--gold);stroke-width:9;stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:120.5;transition:stroke-dashoffset 1.8s var(--ease)}
+.js .ringbox:not(.in) .ring-fg{stroke-dashoffset:339.3}
+.ringbox .mid{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ringbox .mid b{font-family:var(--serif);font-weight:300;font-size:clamp(56px,8vw,88px);line-height:1;color:var(--cream)}
+.ringbox .mid span{color:#B9C0DE;font-size:15px;max-width:16ch;margin:6px auto 0}
+.sci-list{display:grid;gap:14px}
+.sc{padding:22px 26px;border-radius:30px;background:rgba(255,255,255,.045);border:1px solid var(--line-d)}
+.sc h3{font-size:22px;color:var(--cream)}
+.sc p{margin-top:6px;color:#B9C0DE;font-size:16px;line-height:1.55}
+.sc .k{display:inline-block;margin-top:8px;font-size:13px;color:var(--gold)}
+.dual{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.dual .sc h3{font-size:21px}
+.know{margin-top:clamp(36px,4vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.know > div{padding:26px 30px;border-radius:34px;border:1px solid var(--line-d)}
+.know h3{font-size:22px;font-style:italic;font-weight:400;color:var(--gold)}
+.know ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px;color:#C3CAE6;font-size:16px}
+.know li{display:flex;gap:12px}
+.know li::before{content:"";flex:none;width:16px;height:8px;margin-top:10px;border-radius:999px;background:var(--lav-400)}
+@media (max-width:900px){.sci,.know{grid-template-columns:1fr}.dual{grid-template-columns:1fr}}
+
+/* safe */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px;position:relative}
+.fstep{position:relative;padding:26px 24px;border-radius:34px;background:var(--card);border:1px solid var(--line);animation:fglow 10s ease-in-out infinite;animation-delay:var(--dl)}
+.fstep .ico{width:32px;height:32px;color:var(--violet)}
+.fstep h3{font-size:21px;margin-top:14px;color:var(--fg)}
+.fstep p{font-size:15px;color:var(--fg2);margin-top:6px;line-height:1.5}
+@keyframes fglow{0%,18%,100%{box-shadow:none;border-color:var(--line)}6%,12%{box-shadow:0 0 0 4px rgba(75,63,181,.16),0 20px 40px -24px rgba(75,63,181,.6);border-color:rgba(75,63,181,.55)}}
+.safe-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:20px}
+.sf{display:flex;gap:14px;padding:20px 22px;border-radius:28px;background:var(--night-900);color:var(--cream)}
+.sf .ico{color:var(--gold);width:26px;height:26px;margin-top:2px}
+.sf b{display:block;font-size:16.5px}
+.sf span{font-size:15px;color:#B9C0DE;line-height:1.5;display:block;margin-top:2px}
+.sub{margin-top:clamp(44px,5vw,64px);font-family:var(--serif);font-size:28px;font-weight:500;color:var(--fg)}
+@media (max-width:900px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+
+/* impact */
+.sdgs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.sdg{position:relative;padding:34px 30px 30px;border-radius:44px;background:rgba(255,253,248,.74);border:1px solid var(--line);overflow:hidden;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.sdg:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(27,35,64,.55)}
+.sdg .big{position:absolute;right:20px;top:-14px;font-family:var(--serif);font-size:150px;line-height:1;font-weight:300;color:rgba(75,63,181,.1)}
+.sdg .tg2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--violet)}
+.sdg h3{font-size:27px;margin-top:10px;position:relative;color:var(--ink)}
+.sdg p{margin-top:12px;color:var(--ink-2);font-size:16px;position:relative}
+.sdg .meas{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);position:relative}
+.sdg .meas b{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
+.sdg .meas span{display:block;margin-top:6px;font-size:15px;color:var(--ink-2);line-height:1.5}
+.sdg .ico{width:34px;height:34px;color:var(--violet);position:relative;margin-bottom:14px}
+@media (max-width:900px){.sdgs{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:860px;margin-top:40px;display:grid;gap:12px}
+.qa{border-radius:30px;border:1px solid var(--line);background:var(--card);transition:background .4s}
+.q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 26px;background:none;border:0;text-align:left;font-family:var(--serif);font-size:21px;color:var(--fg);border-radius:30px}
+.plus{position:relative;flex:none;width:32px;height:32px;border-radius:50%;background:rgba(75,63,181,.12)}
+.plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--violet);transition:transform .4s var(--ease)}
+.plus::after{transform:rotate(90deg)}
+.qa.open .plus::after{transform:rotate(0)}
+.a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.a > div{overflow:hidden}
+.a p{padding:0 26px 22px;color:var(--fg2);font-size:16.5px}
+.qa.open .a{grid-template-rows:1fr}
+
+/* footer */
+.foot{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+.foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,80px);align-items:end}
+.foot h2{font-size:clamp(40px,6vw,80px);font-weight:300}
+.foot h2 em{color:var(--gold)}
+.foot .cta-row{margin-top:28px}
+.refs{margin-top:clamp(44px,6vw,80px);padding-top:28px;border-top:1px solid var(--line-d);font-size:13.5px;line-height:1.55;color:#8F98C2}
+.refs h4{margin:0 0 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#B4A8FF}
+.refs ol{margin:0;padding-left:18px;columns:2;column-gap:36px}
+.refs li{break-inside:avoid;margin-bottom:6px}
+.legal{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;font-size:14px;color:#8F98C2}
+@media (max-width:860px){.foot-top{grid-template-columns:1fr}.refs ol{columns:1}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .ticker-in{animation:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 8h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8z"/><path d="M16 9h2a2 2 0 0 1 0 4h-2M8 3v2M12 3v2"/></symbol>
+<symbol id="i-bench" viewBox="0 0 24 24"><path d="M4 10h16M5 10v4h14v-4M6 14v4M18 14v4"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 2-2h12v16H7a2 2 0 0 0-2 2V5z"/><path d="M5 19a2 2 0 0 1 2-2h12"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13h6l-1 8 8-10h-6l1-8z"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+<symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></symbol>
+<symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19c3-4 6-7 10-9"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></symbol>
+<symbol id="i-vib" viewBox="0 0 24 24"><rect x="8" y="4" width="8" height="16" rx="2"/><path d="M4 8v8M20 8v8"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/><path d="M19 17v4M17 19h4"/></symbol>
+<symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8 4L3 7l2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/></symbol>
+<symbol id="i-door" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5"/><circle cx="15" cy="12" r="1"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-unlock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4l2-2z"/><path d="M10 21h4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></symbol>
+<symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+<symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></symbol>
+<symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><path d="M4 4l16 16"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 0 1 0 5.7M18 14.4c2 .8 3.4 2.9 3.4 5.6"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+</defs>
+</svg>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Campus Sleep Capsules, back to top">
+    <svg viewBox="0 0 34 20" aria-hidden="true"><rect x="1" y="1" width="32" height="18" rx="9" fill="none" stroke="#EDBB74" stroke-width="1.6"/><path d="M23 6.2a4.6 4.6 0 1 0 0 7.6 3.7 3.7 0 0 1 0-7.6z" fill="#EDBB74"/></svg>
+    Campus Sleep Capsules
+  </a>
+  <ul>
+    <li><a href="#about">Why</a></li>
+    <li><a href="#inside">Inside</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#who">Who it's for</a></li>
+    <li><a href="#science">Science</a></li>
+    <li><a href="#impact">Impact</a></li>
+  </ul>
+  <a class="btn btn-gold" href="#planner">Plan a nap</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="chip load" style="--d:.05s"><i></i>Soundproof · Science-backed · 40 minutes</span>
+        <h1 class="load" style="--d:.15s">Rest, <em>between</em> classes.</h1>
+        <p class="lead load" style="--d:.3s">Campus Sleep Capsules are private, soundproof beds you book in an app. Take a 40-minute nap in the gap between lectures and walk into your next class awake.</p>
+        <div class="cta-row load" style="--d:.45s">
+          <a class="btn btn-gold" href="#inside">See inside the capsule <svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <ul class="facts load" style="--d:.6s">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>One booking, 40 minutes</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>Private and soundproof</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg>Fresh sheet every time</li>
+        </ul>
+      </div>
+      <div class="hero-art load" style="--d:.35s" id="heroArt">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Illustration of a sleep capsule with a softly lit window showing a crescent moon">
+          <defs>
+            <linearGradient id="gShell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E73C4"/><stop offset=".5" stop-color="#34408A"/><stop offset="1" stop-color="#171F4C"/></linearGradient>
+            <linearGradient id="gSheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <radialGradient id="gWin" cx=".5" cy=".35" r=".85"><stop offset="0" stop-color="#FFE9BE"/><stop offset=".6" stop-color="#EDBB74"/><stop offset="1" stop-color="#B07C3E"/></radialGradient>
+            <radialGradient id="gGround" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#6F63D9" stop-opacity=".55"/><stop offset="1" stop-color="#6F63D9" stop-opacity="0"/></radialGradient>
+            <clipPath id="winClip"><rect x="392" y="130" width="170" height="86" rx="43"/></clipPath>
+            <mask id="moonMask"><rect x="440" y="140" width="80" height="70" fill="#fff"/><circle cx="484" cy="162" r="21" fill="#000"/></mask>
+          </defs>
+          <g class="ring-spin" fill="none" stroke="#fff" stroke-opacity=".09">
+            <circle cx="320" cy="200" r="170"/><circle cx="320" cy="200" r="235"/><circle cx="320" cy="200" r="300"/>
+            <circle cx="320" cy="200" r="205" stroke="#EDBB74" stroke-opacity=".22" stroke-dasharray="3 9"/>
+            <circle cx="525" cy="200" r="5" fill="#EDBB74" stroke="none"/><circle cx="155" cy="68" r="4" fill="#B4A8FF" stroke="none"/><circle cx="198" cy="372" r="3.5" fill="#fff" stroke="none" fill-opacity=".7"/>
+          </g>
+          <ellipse cx="320" cy="354" rx="270" ry="26" fill="url(#gGround)"/>
+          <g class="pod-float">
+            <rect x="130" y="286" width="380" height="46" rx="16" fill="#0B1130"/>
+            <rect x="36" y="86" width="568" height="212" rx="106" fill="url(#gShell)"/>
+            <rect x="36" y="86" width="568" height="212" rx="106" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/>
+            <rect x="66" y="98" width="508" height="46" rx="23" fill="url(#gSheen)" opacity=".38"/>
+            <path d="M372 104V282" stroke="#fff" stroke-opacity=".1"/>
+            <rect x="392" y="130" width="170" height="86" rx="43" fill="url(#gWin)"/>
+            <g clip-path="url(#winClip)">
+              <circle cx="470" cy="172" r="26" fill="#FFF4DA" mask="url(#moonMask)"/>
+              <circle cx="425" cy="150" r="1.8" fill="#fff"/><circle cx="522" cy="196" r="1.5" fill="#fff"/><circle cx="510" cy="152" r="1.3" fill="#fff"/><circle cx="436" cy="198" r="1.2" fill="#fff"/>
+              <rect x="392" y="130" width="170" height="86" fill="none" stroke="#0B1130" stroke-opacity=".35" stroke-width="6"/>
+            </g>
+            <rect x="392" y="130" width="170" height="86" rx="43" fill="none" stroke="#F6D9A8" stroke-opacity=".6" stroke-width="2"/>
+            <rect x="84" y="150" width="156" height="62" rx="31" fill="#0C1230" stroke="#fff" stroke-opacity=".14"/>
+            <text x="162" y="169" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" letter-spacing="3" fill="#9AA3D0">NAP</text>
+            <text x="162" y="199" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="30" fill="#EDBB74">40:00</text>
+            <rect x="262" y="238" width="96" height="6" rx="3" fill="#EDBB74" class="pulse"/>
+            <text class="zz" x="486" y="116" font-size="30">z</text>
+            <text class="zz b" x="518" y="100" font-size="24">z</text>
+            <text class="zz c" x="544" y="86" font-size="18">z</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-in">
+        <span>Soundproof</span><span>Cooled to sleep</span><span>Lavender or forest air</span><span>Rain and storm sounds</span><span>Phone charging</span><span>Storage under the bed</span><span>Rising light</span><span>Fresh sheet and UV</span>
+        <span>Soundproof</span><span>Cooled to sleep</span><span>Lavender or forest air</span><span>Rain and storm sounds</span><span>Phone charging</span><span>Storage under the bed</span><span>Rising light</span><span>Fresh sheet and UV</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec day" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow">Who we are</span>
+      <h2>A bed for the <em>gap</em> in your day.</h2>
+      <p class="lead">We place private, soundproof sleep capsules on university campuses. Book one in the app and take a science-backed 40-minute nap between classes. No commute home, no bench, no noise.</p>
+    </div>
+    <div class="pills">
+      <div class="pillcard reveal" style="--d:.1s"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></span><div><h3>What we are</h3><p>A bookable nap capsule on campus: quiet, private and ready every time.</p></div></div>
+      <div class="pillcard reveal" style="--d:.2s"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span><div><h3>Why we exist</h3><p>Students wait hours between classes with nowhere to rest. We want rest to be a normal, easy part of the student day.</p></div></div>
+      <div class="pillcard reveal" style="--d:.3s"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><div><h3>Whose problem we solve</h3><p>Students with long gaps between classes, starting with commuters.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sand" id="gap">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Tired students with <em>nowhere</em> to rest.</h2>
+      <p class="lead">Students arrive in the morning and then wait hours for the next class. Benches and café tables are public and loud. Switch the view to see the same gap with a capsule.</p>
+    </div>
+
+    <div class="day-card reveal" id="dayCard" data-mode="today">
+      <div class="day-head">
+        <div class="seg" role="group" aria-label="Compare the gap">
+          <span class="thumb" id="segThumb" aria-hidden="true"></span>
+          <button type="button" data-mode="today" aria-pressed="true">Today</button>
+          <button type="button" data-mode="capsule" aria-pressed="false">With a capsule</button>
+        </div>
+        <span class="tag">An illustrative day</span>
+      </div>
+      <div class="track">
+        <div class="blk"><small>09:00</small><b>Class</b></div>
+        <div class="gapzone">
+          <div class="state s-today">
+            <div class="opts">
+              <span class="opt"><svg class="ico" aria-hidden="true"><use href="#i-cup"/></svg>Café table</span>
+              <span class="opt"><svg class="ico" aria-hidden="true"><use href="#i-bench"/></svg>A bench</span>
+              <span class="opt"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>Library chair</span>
+            </div>
+            <p class="note">Tired, noisy, bag on your knees, phone at 10%.</p>
+          </div>
+          <div class="state s-cap">
+            <div class="napbig"><span class="moon"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg></span><b>40-minute nap</b></div>
+            <div class="opts">
+              <span class="opt"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg>Phone charged</span>
+              <span class="opt"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>Bag stored</span>
+              <span class="opt"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg>Wake gently</span>
+            </div>
+          </div>
+        </div>
+        <div class="blk"><small>14:30</small><b>Class</b></div>
+      </div>
+      <p class="day-note" id="dayNote" aria-live="polite">The long gap becomes a long slump.</p>
+    </div>
+
+    <div class="pains">
+      <div class="pain reveal"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><h3>Long gaps</h3><p>Students arrive in the morning, then wait hours for the next class.</p></div>
+      <div class="pain reveal" style="--d:.1s"><svg class="ico" aria-hidden="true"><use href="#i-eye-off"/></svg><h3>Nowhere private</h3><p>Benches and café tables offer little privacy, quiet or safe storage.</p></div>
+      <div class="pain reveal" style="--d:.2s"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg><h3>Sleep debt</h3><p>Many students start the day short of sleep, so a long gap becomes a long slump.</p></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><b><span data-count="25">25</span>–<span data-count="50">50</span>%</b><p>of university students report significant daytime sleepiness.</p></div>
+      <div class="stat reveal" style="--d:.1s"><b><span data-count="70">70</span>%</b><p>of 341 medical students and residents at one Turkish university had poor sleep quality.</p></div>
+      <div class="stat reveal" style="--d:.2s"><b><span data-count="52">52</span>%</b><p>of 256 Turkish university students named noise from others as a cause of poor sleep.</p></div>
+    </div>
+    <p class="srcline">Sources: Lovato, Lack and Wright (2014); Ergin et al. (2022); Altun, Çınar and Dede (2012). The Turkish figures come from single-university samples.</p>
+  </div>
+</section>
+
+<section class="sec night" id="inside">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Inside the capsule</span>
+      <h2>Everything a nap needs, in <em>one</em> booking.</h2>
+      <p class="lead">Tap the glowing points to look around, then try the sound, scent and wake-up for yourself.</p>
+    </div>
+
+    <div class="inside-grid">
+      <div class="reveal">
+        <div class="stage-wrap">
+          <div class="stage" id="stage" data-active="shell" data-scent="none" data-sound="off">
+            <svg viewBox="0 0 900 470" role="img" aria-label="Cutaway of the capsule showing storage under the bed, charging, speaker, cooling vents, scent diffuser, rising light, sheet and UV cycle, and a changing cabin next to it">
+              <defs>
+                <linearGradient id="sShell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A60B4"/><stop offset=".55" stop-color="#2D3880"/><stop offset="1" stop-color="#171F4C"/></linearGradient>
+                <linearGradient id="sIn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D1434"/><stop offset="1" stop-color="#1A2358"/></linearGradient>
+                <linearGradient id="sCone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE3AE" stop-opacity=".95"/><stop offset="1" stop-color="#FFE3AE" stop-opacity="0"/></linearGradient>
+                <linearGradient id="sUv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A68BFF" stop-opacity=".9"/><stop offset="1" stop-color="#A68BFF" stop-opacity="0"/></linearGradient>
+                <radialGradient id="sGround" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#6F63D9" stop-opacity=".45"/><stop offset="1" stop-color="#6F63D9" stop-opacity="0"/></radialGradient>
+                <clipPath id="inClip"><rect x="78" y="98" width="644" height="234" rx="112"/></clipPath>
+                <clipPath id="matClip"><rect x="130" y="236" width="540" height="30" rx="15"/></clipPath>
+              </defs>
+              <ellipse cx="400" cy="402" rx="380" ry="22" fill="url(#sGround)"/>
+              <rect x="140" y="326" width="520" height="40" rx="14" fill="#0B1130"/>
+
+              <g class="part p-cabin">
+                <rect x="772" y="186" width="106" height="184" rx="22" fill="#222E6A" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/>
+                <rect x="790" y="212" width="70" height="146" rx="12" fill="#151D4B" stroke="#fff" stroke-opacity=".12"/>
+                <circle cx="850" cy="290" r="3.5" fill="#EDBB74"/>
+                <path d="M825 232v10M812 250q13-14 26 0z" fill="none" stroke="#EDBB74" stroke-width="1.6" stroke-linecap="round"/>
+                <rect x="806" y="196" width="38" height="5" rx="2.5" fill="#EDBB74" opacity=".8"/>
+                <text x="825" y="392" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" fill="#9AA3D0">Changing cabin</text>
+              </g>
+
+              <g class="part p-shell">
+                <rect x="50" y="70" width="700" height="290" rx="140" fill="url(#sShell)"/>
+                <rect x="50" y="70" width="700" height="290" rx="140" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="2"/>
+                <rect x="76" y="80" width="648" height="40" rx="20" fill="#fff" opacity=".12"/>
+              </g>
+              <rect class="shellglow" x="46" y="66" width="708" height="298" rx="144" fill="none" stroke="#EDBB74" stroke-width="3" style="filter:drop-shadow(0 0 10px rgba(237,187,116,.8))"/>
+
+              <rect x="78" y="98" width="644" height="234" rx="112" fill="url(#sIn)"/>
+              <g clip-path="url(#inClip)">
+                <rect x="78" y="98" width="644" height="234" fill="#EDBB74" class="dawnfx"/>
+                <polygon class="cone p-light" points="300,118 640,118 700,236 240,236" fill="url(#sCone)"/>
+              </g>
+
+              <g class="part p-light">
+                <rect x="300" y="108" width="340" height="9" rx="4.5" fill="#F6D9A8"/>
+              </g>
+              <g class="uv">
+                <rect x="300" y="120" width="340" height="5" rx="2.5" fill="#A68BFF"/>
+                <polygon points="300,125 640,125 660,236 280,236" fill="url(#sUv)" opacity=".55"/>
+              </g>
+
+              <rect x="130" y="262" width="540" height="22" rx="8" fill="#2A356F"/>
+              <rect x="130" y="236" width="540" height="30" rx="15" fill="#EFE6D6"/>
+              <g clip-path="url(#matClip)">
+                <rect class="sheetnew" x="130" y="236" width="540" height="30" fill="#FFFFFF"/>
+              </g>
+              <ellipse cx="202" cy="224" rx="52" ry="17" fill="#F8F3EB"/>
+              <path d="M270 236C300 198 380 192 470 202 540 209 600 216 640 236z" fill="#8E84D8" opacity=".8"/>
+
+              <g class="part p-clean">
+                <rect x="130" y="236" width="540" height="30" rx="15" fill="none" stroke="#EDBB74" stroke-opacity=".0"/>
+                <path d="M690 250h-22M690 258h-22" stroke="#EDBB74" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+                <circle cx="696" cy="254" r="7" fill="none" stroke="#EDBB74" stroke-width="2"/>
+              </g>
+
+              <g class="part p-storage">
+                <rect x="300" y="290" width="260" height="30" rx="8" fill="#16204A" stroke="#EDBB74" stroke-opacity=".7" stroke-width="1.5"/>
+                <rect x="412" y="301" width="36" height="6" rx="3" fill="#EDBB74"/>
+              </g>
+
+              <g class="part p-charging">
+                <rect x="94" y="196" width="28" height="32" rx="7" fill="#26316C" stroke="#EDBB74" stroke-opacity=".7"/>
+                <path d="M110 202l-6 11h6l-2 9 8-12h-6l2-8z" fill="#EDBB74"/>
+              </g>
+
+              <g class="part p-sound">
+                <rect x="150" y="112" width="92" height="15" rx="7.5" fill="#26316C" stroke="#EDBB74" stroke-opacity=".6"/>
+                <circle cx="170" cy="119.5" r="2" fill="#EDBB74"/><circle cx="196" cy="119.5" r="2" fill="#EDBB74"/><circle cx="222" cy="119.5" r="2" fill="#EDBB74"/>
+              </g>
+              <g class="waves" fill="none" stroke="#EDBB74" stroke-width="2" stroke-linecap="round">
+                <path d="M172 140q24 12 48 0"/><path d="M160 152q36 18 72 0"/><path d="M148 164q48 24 96 0"/>
+              </g>
+
+              <g class="part p-scent">
+                <rect x="98" y="132" width="20" height="30" rx="7" fill="#3A4488" stroke="#EDBB74" stroke-opacity=".7"/>
+                <rect x="103" y="126" width="10" height="8" rx="3" fill="#EDBB74"/>
+              </g>
+              <g class="sp-g">
+                <circle class="sp" cx="108" cy="124" r="3.5" style="--dl:0s;--dx:14px"/>
+                <circle class="sp" cx="112" cy="124" r="2.6" style="--dl:.9s;--dx:30px"/>
+                <circle class="sp" cx="106" cy="124" r="3" style="--dl:1.8s;--dx:6px"/>
+                <circle class="sp" cx="110" cy="124" r="2.2" style="--dl:2.6s;--dx:44px"/>
+                <circle class="sp" cx="108" cy="124" r="3.2" style="--dl:3.4s;--dx:22px"/>
+              </g>
+
+              <g class="part p-cooling">
+                <rect x="688" y="130" width="18" height="70" rx="9" fill="#26316C" stroke="#EDBB74" stroke-opacity=".7"/>
+                <path d="M692 148h10M692 160h10M692 172h10M692 184h10" stroke="#EDBB74" stroke-width="1.6" stroke-linecap="round"/>
+              </g>
+              <g class="wisps" fill="none" stroke="#B8CCFF" stroke-width="2" stroke-linecap="round">
+                <path d="M684 150q-40-14-80 2t-70-4"/><path d="M684 165q-46-12-92 2t-80-4"/><path d="M684 180q-34-10-70 2t-60-4"/>
+              </g>
+
+              <g class="part p-pj">
+                <rect x="676" y="212" width="34" height="26" rx="5" fill="#EFE6D6"/>
+                <path d="M680 222h26M680 229h26" stroke="#8E84D8" stroke-width="2"/>
+              </g>
+
+              <g class="vib" fill="none" stroke="#EDBB74" stroke-width="2" stroke-linecap="round">
+                <path d="M140 214q-7 10 0 20"/><path d="M130 210q-12 14 0 28"/>
+                <path d="M264 214q7 10 0 20"/><path d="M274 210q12 14 0 28"/>
+              </g>
+
+              <text class="zs" x="236" y="190" font-size="26">z</text>
+              <text class="zs" x="262" y="164" font-size="20" style="animation-delay:1.7s">z</text>
+              <text class="zs" x="284" y="142" font-size="16" style="animation-delay:3.4s">z</text>
+            </svg>
+
+            <button class="hs" type="button" data-key="shell" aria-label="Soundproof shell" style="left:44.4%;top:16.2%" aria-pressed="true"></button>
+            <button class="hs" type="button" data-key="storage" aria-label="Storage under the bed" style="left:47.8%;top:64.9%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="charging" aria-label="Charging station" style="left:12.1%;top:44.9%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="sound" aria-label="Music and nature sounds" style="left:21.7%;top:25.3%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="scent" aria-label="Optional scent" style="left:12.1%;top:30.2%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="cooling" aria-label="Gentle cooling" style="left:77.6%;top:36.2%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="light" aria-label="Rising light, alarm and vibration" style="left:52.2%;top:24.3%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="clean" aria-label="Fresh sheet and UV" style="left:57.8%;top:53.6%" aria-pressed="false"></button>
+            <button class="hs" type="button" data-key="cabin" aria-label="Pyjamas and changing cabin" style="left:91.7%;top:57.4%" aria-pressed="false"></button>
+          </div>
+        </div>
+
+        <div class="controls" role="group" aria-label="Try the capsule">
+          <div class="ctl">
+            <h4>Sound</h4>
+            <div class="opts2" id="soundOpts">
+              <button type="button" data-v="off" aria-pressed="true">Off</button>
+              <button type="button" data-v="rain" aria-pressed="false">Rain</button>
+              <button type="button" data-v="storm" aria-pressed="false">Storm</button>
+              <button type="button" data-v="waves" aria-pressed="false">Waves</button>
+            </div>
+            <div class="vol"><label for="vol">Volume</label><input id="vol" type="range" min="0" max="100" value="45"></div>
+          </div>
+          <div class="ctl">
+            <h4>Scent</h4>
+            <div class="opts2" id="scentOpts">
+              <button type="button" data-v="none" aria-pressed="true">None</button>
+              <button type="button" data-v="lavender" aria-pressed="false">Lavender</button>
+              <button type="button" data-v="forest" aria-pressed="false">Forest</button>
+            </div>
+          </div>
+          <div class="ctl">
+            <h4>Wake-up</h4>
+            <div class="opts2"><button type="button" id="wakeBtn" aria-pressed="false">Preview the wake-up</button></div>
+          </div>
+        </div>
+        <p class="fine">Sound and wake-up are simple previews made in your browser, not the final audio.</p>
+      </div>
+
+      <aside class="panel reveal" style="--d:.1s" aria-live="polite">
+        <div id="panelBody">
+          <span class="pic" id="pPic"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <h3 id="pTitle">Soundproof shell</h3>
+          <p id="pText">A closed, insulated shell keeps campus noise out and gives you a space of your own.</p>
+          <ul id="pList"></ul>
+        </div>
+        <p class="hint"><i></i>Tap any glowing point on the capsule.</p>
+      </aside>
+    </div>
+
+    <div class="rail">
+      <div class="rail-row reveal"><h3>The sleep environment</h3>
+        <div class="rail-cards">
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><div><b>Soundproof shell</b><span>Shuts out campus noise so you hear only what you choose.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-snow"/></svg><div><b>Gentle cooling</b><span>The capsule cools to a comfortable sleep temperature as you settle in.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg><div><b>Optional scent</b><span>A light spray of lavender or forest air, only if you want it.</span></div></div>
+        </div>
+      </div>
+      <div class="rail-row reveal"><h3>Sound</h3>
+        <div class="rail-cards">
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><div><b>Your own music</b><span>Connect your phone by Bluetooth and play your own playlists.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-sound"/></svg><div><b>Nature sounds</b><span>Rain, storm and other natural sounds for people who sleep better with a soft background.</span></div></div>
+        </div>
+      </div>
+      <div class="rail-row reveal"><h3>Waking up</h3>
+        <div class="rail-cards">
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><div><b>Rising light</b><span>The light comes up slowly instead of switching on.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg><div><b>Soft alarm</b><span>A gentle sound, never a harsh ring.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-vib"/></svg><div><b>Cushion vibration</b><span>A light pulse through the cushion helps you come round.</span></div></div>
+        </div>
+      </div>
+      <div class="rail-row reveal"><h3>Made for students</h3>
+        <div class="rail-cards">
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg><div><b>Booked in the app</b><span>Pick a capsule and a 40-minute slot that fits your gap.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg><div><b>Storage under the bed</b><span>A hatch under the bed keeps your things close and out of sight.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg><div><b>Charging station</b><span>Charge your phone or anything else that needs power.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-shirt"/></svg><div><b>Disposable pyjamas</b><span>No comfortable clothes? Single-use pyjamas are in the capsule.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-door"/></svg><div><b>Changing cabin</b><span>A cabin next to the capsule, or near the toilets, to change in.</span></div></div>
+        </div>
+      </div>
+      <div class="rail-row reveal"><h3>Fresh every time</h3>
+        <div class="rail-cards">
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg><div><b>Automatic sheet change</b><span>When you leave, the bed sheet is changed automatically.</span></div></div>
+          <div class="fcard"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><div><b>UV sterilisation</b><span>The bed is sterilised with UV light before the next student.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec day" id="how">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Five steps from <em>tired</em> to ready.</h2>
+      <p class="lead">Scroll through a booking. The app screens are a concept preview and will change as we test them with students.</p>
+    </div>
+    <div class="how-grid">
+      <div class="phone-col">
+        <div class="phone" aria-hidden="true">
+          <div class="screen">
+            <div class="scr on" data-s="0"><small>Concept preview</small><h4>Book a nap</h4>
+              <div class="slot"><span>10:40 – 11:20</span><b>Capsule A</b></div>
+              <div class="slot sel"><span>11:00 – 11:40</span><b>Capsule B</b></div>
+              <div class="slot"><span>11:40 – 12:20</span><b>Capsule B</b></div>
+              <div class="pbtn">Book 40 minutes</div></div>
+            <div class="scr" data-s="1"><small>You are booked</small><h4>Capsule B is ready</h4>
+              <div class="lockc"><svg class="ico" aria-hidden="true"><use href="#i-unlock"/></svg></div>
+              <div class="slot"><span>Pyjamas inside</span><b>Cabin next door</b></div>
+              <div class="pbtn">Unlock</div></div>
+            <div class="scr" data-s="2"><small>Settle in</small><h4>Make it yours</h4>
+              <div class="tg">Sound<span>Rain</span></div>
+              <div class="tg">Scent<span>Lavender</span></div>
+              <div class="tg">Phone<span>Charging</span></div>
+              <div class="tg">Bag<span>Stored</span></div></div>
+            <div class="scr" data-s="3"><small>Napping</small><h4>Sleep well</h4>
+              <div class="dial"><div><b>40:00</b><span>session</span></div></div>
+              <div class="slot"><span>Settle in</span><b>about 10 min</b></div>
+              <div class="slot"><span>Sleep</span><b>about 27 min</b></div></div>
+            <div class="scr" data-s="4"><small>Time to wake</small><h4>The light is rising</h4>
+              <div class="sunr"></div>
+              <div class="slot"><span>Soft alarm</span><b>then cushion</b></div></div>
+          </div>
+        </div>
+        <p class="cap">App screens shown are a concept, not the final design.</p>
+      </div>
+      <div class="steps" id="steps">
+        <div class="step on" data-s="0"><span class="num">1</span><div><h3>Book</h3><p>Pick a capsule and a 40-minute slot in the app. Choose the one that fits your gap.</p></div></div>
+        <div class="step" data-s="1"><span class="num">2</span><div><h3>Arrive</h3><p>Unlock with your booking. Change in the cabin if you want to; pyjamas are provided.</p></div></div>
+        <div class="step" data-s="2"><span class="num">3</span><div><h3>Settle in</h3><p>Store your bag under the bed, charge your phone and pick your sound. The capsule cools and adds a scent if you like.</p></div></div>
+        <div class="step" data-s="3"><span class="num">4</span><div><h3>Nap</h3><p>Fall asleep in up to about 10 minutes, then sleep for roughly 27.</p></div></div>
+        <div class="step" data-s="4"><span class="num">5</span><div><h3>Wake gently</h3><p>The light rises, then a soft alarm and cushion vibration. The sheet changes and UV runs for the next student.</p></div></div>
+      </div>
+    </div>
+
+    <div class="session reveal">
+      <h3>One 40-minute session</h3>
+      <div class="seg-bar" id="segBar">
+        <div class="a"><b>Settle in</b><span>0–10 min</span></div>
+        <div class="b"><b>Nap</b><span>10–37 min, about 27 minutes of sleep</span></div>
+        <div class="c"><b>Wake</b><span>37–40</span></div>
+      </div>
+      <p class="srcline">Timing is approximate and will be tuned in a pilot. Based on NASA's 40-minute rest window (Rosekind et al., 1995) and about 10 minutes to fall asleep (NUS Medicine, 2023).</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec dusk" id="planner">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Plan a nap</span>
+      <h2>Does a capsule fit <em>your</em> gap?</h2>
+      <p class="lead">Enter when your class ends and when the next one starts. We leave 10 minutes at the end to walk to class.</p>
+    </div>
+    <div class="plan">
+      <div class="pcard reveal">
+        <div class="field"><label for="tEnd">My class ends at</label><input id="tEnd" type="time" value="10:30"></div>
+        <div class="field"><label for="tNext">My next class starts at</label><input id="tNext" type="time" value="14:30"></div>
+        <p class="fine" style="margin:0">Example times. Change them to match your timetable.</p>
+      </div>
+      <div class="pcard res reveal" style="--d:.1s" aria-live="polite">
+        <h3 id="rTitle">You have a gap of 4 h.</h3>
+        <p id="rText"></p>
+        <div class="bar" id="bar"><div class="nap" id="napPill"><svg class="ico" aria-hidden="true" style="width:18px;height:18px"><use href="#i-moon"/></svg><span id="napLbl">40 min</span></div><div class="buf" id="buf"></div></div>
+        <div class="axis"><span id="axL">10:30</span><span id="axR">14:30</span></div>
+        <div class="sl"><label for="nStart">Start the nap</label><input id="nStart" type="range" min="0" max="100" value="0" step="5"></div>
+        <div class="quick"><button type="button" id="qEarly">Right after class</button><button type="button" id="qLate">Just before class</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec day" id="who">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Made for students with <em>long</em> gaps.</h2>
+      <p class="lead">We start with the students who feel the gap most, then open up as we learn.</p>
+    </div>
+    <div class="who-grid">
+      <div class="persona reveal">
+        <span class="tag">Meet Ece · illustrative persona</span>
+        <h3>Ece, 20</h3>
+        <p>Third-year commuter. Classes at 09:00 and 14:30. She spends the gap in a café or the library, tired, with her phone at 10%.</p>
+        <div class="needs"><span>Quiet</span><span>Privacy</span><span>A charger</span><span>A safe place for her bag</span><span>A nap without grogginess</span></div>
+      </div>
+      <div class="waves-list">
+        <div class="wv reveal"><div class="rings" aria-hidden="true"><i></i></div><div><small>First</small><h3>Early adopters</h3><p>Commuters and students with gaps of two hours or more.</p></div></div>
+        <div class="wv reveal" style="--d:.1s"><div class="rings" aria-hidden="true"><i></i><i></i></div><div><small>Next</small><h3>Late-study and exam-period students</h3><p>Students who stay on campus long hours before exams.</p></div></div>
+        <div class="wv reveal" style="--d:.2s"><div class="rings" aria-hidden="true"><i></i><i></i><i></i></div><div><small>Later</small><h3>Staff, faculty and campus visitors</h3><p>Anyone on campus who needs a short rest.</p></div></div>
+      </div>
+    </div>
+    <div class="numline reveal"><b>≈ 4.05 million</b><span>students in formal programmes in Turkey in 2025–26 (YÖK, 2026), including about 2.5 million bachelor's students.</span></div>
+  </div>
+</section>
+
+<section class="sec night" id="science">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">The science</span>
+      <h2>Why <em>forty</em> minutes?</h2>
+      <p class="lead">A short nap can lift alertness without leaving you in a heavy sleep. Here is what the research says, and what we still have to test.</p>
+    </div>
+    <div class="sci">
+      <div class="ringbox reveal" id="ringBox">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="ring-bg" cx="60" cy="60" r="54"/><circle class="ring-fg" cx="60" cy="60" r="54"/></svg>
+        <div class="mid"><b>25.8</b><span>minutes asleep on average in a 40-minute rest window</span></div>
+      </div>
+      <div class="sci-list">
+        <div class="sc reveal"><h3>NASA's 40-minute window</h3><p>Pilots given a 40-minute rest window fell asleep in 5.6 minutes and slept 25.8 minutes on average. They showed 54% higher alertness and 34% better job performance than pilots with no rest.</p><span class="k">Rosekind et al. (1995) · 21 crew members, so supporting evidence, not proof for campuses</span></div>
+        <div class="dual">
+          <div class="sc reveal"><h3>Cooling helps you drop off</h3><p>Falling asleep is closely tied to how the body regulates temperature, so the capsule cools gently as you settle.</p><span class="k">Harding, Franks and Wisden (2019)</span></div>
+          <div class="sc reveal" style="--d:.1s"><h3>Naps help thinking</h3><p>A systematic review found that afternoon naps improve cognitive performance, mostly in laboratory studies.</p><span class="k">Dutheil et al. (2021)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="know">
+      <div class="reveal"><h3>What we are building on</h3>
+        <ul>
+          <li>A short nap has the most support, so a session is 40 minutes with a gentle wake-up.</li>
+          <li>Lavender aroma showed a sleep benefit in a meta-analysis (Shen, Zhang and Zhu, 2025).</li>
+          <li>Rising light, a soft alarm and a cushion pulse are meant to reduce grogginess.</li>
+        </ul>
+      </div>
+      <div class="reveal" style="--d:.1s"><h3>What we still have to test</h3>
+        <ul>
+          <li>Lavender researchers call for more high-quality trials, so scent is optional.</li>
+          <li>Evidence that continuous sound helps sleep is limited (Riedy et al., 2021), so sound is always your choice.</li>
+          <li>In one laboratory study, grogginess appeared only after 30–60 minute naps, was small and cleared within 30 minutes (NUS Medicine, 2023). We will measure ours in a pilot.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sand" id="safe">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Clean and safe</span>
+      <h2>Ready for the next student, <em>every</em> time.</h2>
+      <p class="lead">After you leave, the capsule resets itself before anyone else lies down.</p>
+    </div>
+    <div class="flow">
+      <div class="fstep reveal" style="--dl:0s"><svg class="ico" aria-hidden="true"><use href="#i-door"/></svg><h3>You leave</h3><p>Your session ends and you step out.</p></div>
+      <div class="fstep reveal" style="--dl:2.5s"><svg class="ico" aria-hidden="true"><use href="#i-spark"/></svg><h3>Sheet changes</h3><p>The bed sheet is changed automatically.</p></div>
+      <div class="fstep reveal" style="--dl:5s"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><h3>UV runs</h3><p>UV light sterilises the bed while the capsule is empty and locked.</p></div>
+      <div class="fstep reveal" style="--dl:7.5s"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg><h3>Ready</h3><p>The capsule opens for the next booking.</p></div>
+    </div>
+    <h3 class="sub reveal">Designed to feel safe</h3>
+    <div class="safe-list">
+      <div class="sf reveal"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg><div><b>Emergency button and door release</b><span>Inside the capsule, always within reach.</span></div></div>
+      <div class="sf reveal" style="--d:.08s"><svg class="ico" aria-hidden="true"><use href="#i-wind"/></svg><div><b>Ventilation and fire-safety checks</b><span>Planned for a closed, enclosed bed.</span></div></div>
+      <div class="sf reveal" style="--d:.16s"><svg class="ico" aria-hidden="true"><use href="#i-eye-off"/></svg><div><b>No cameras inside</b><span>We plan to keep booking data to a minimum.</span></div></div>
+      <div class="sf reveal" style="--d:.24s"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><div><b>A session timer</b><span>With a gentle wake-up when your 40 minutes end.</span></div></div>
+    </div>
+    <p class="srcline">These are our design requirements. They still need technical and regulatory checks before any capsule is installed.</p>
+  </div>
+</section>
+
+<section class="sec dawn" id="impact">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Our impact</span>
+      <h2>Built around three <em>global</em> goals.</h2>
+      <p class="lead">Rest is part of learning and health. The capsule is also a new kind of campus infrastructure. We link the project to three of the United Nations Sustainable Development Goals.</p>
+    </div>
+    <div class="sdgs">
+      <article class="sdg reveal"><span class="big" aria-hidden="true">3</span><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><span class="tg2">SDG 3</span><h3>Good Health and Well-being</h3><p>Students get rest in the middle of the day instead of pushing through exhaustion. Short naps have been linked to higher alertness (Rosekind et al., 1995).</p><div class="meas"><b>What we will measure</b><span>Booked sessions, and students' own sleepiness ratings before and after a nap in a pilot.</span></div></article>
+      <article class="sdg reveal" style="--d:.1s"><span class="big" aria-hidden="true">4</span><svg class="ico" aria-hidden="true"><use href="#i-cap"/></svg><span class="tg2">SDG 4</span><h3>Quality Education</h3><p>Alert students can concentrate better in their next class. A systematic review links daytime naps to better cognitive performance (Dutheil et al., 2021). Commuters get a place to recharge on campus.</p><div class="meas"><b>What we will measure</b><span>Students' self-rated focus after a nap, and use by commuters and students with long gaps.</span></div></article>
+      <article class="sdg reveal" style="--d:.2s"><span class="big" aria-hidden="true">9</span><svg class="ico" aria-hidden="true"><use href="#i-chip"/></svg><span class="tg2">SDG 9</span><h3>Industry, Innovation and Infrastructure</h3><p>A new campus service built from app booking, automated cleaning and smart climate control. It is a student-led innovation that adds useful infrastructure to a university.</p><div class="meas"><b>What we will measure</b><span>Capsule availability, cleaning cycles completed and booking data kept to a minimum.</span></div></article>
+    </div>
+    <p class="srcline">The measures above are what we plan to track in a pilot, not results.</p>
+  </div>
+</section>
+
+<section class="sec sand" id="faq">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Things students ask <em>first</em>.</h2>
+    </div>
+    <div class="faq">
+      <div class="qa reveal"><button class="q" type="button" aria-expanded="false" aria-controls="a1" id="q1">Is it open yet?<span class="plus" aria-hidden="true"></span></button><div class="a" id="a1" role="region" aria-labelledby="q1"><div><p>Not yet. Campus Sleep Capsules is a student entrepreneurship concept. We are researching demand with a student survey and interviews before any capsule is built.</p></div></div></div>
+      <div class="qa reveal"><button class="q" type="button" aria-expanded="false" aria-controls="a2" id="q2">How long is a session?<span class="plus" aria-hidden="true"></span></button><div class="a" id="a2" role="region" aria-labelledby="q2"><div><p>40 minutes. Allow up to about 10 minutes to fall asleep, then roughly 27 minutes of sleep, then a gentle wake-up. Timings will be tuned in a pilot.</p></div></div></div>
+      <div class="qa reveal"><button class="q" type="button" aria-expanded="false" aria-controls="a3" id="q3">Is it hygienic?<span class="plus" aria-hidden="true"></span></button><div class="a" id="a3" role="region" aria-labelledby="q3"><div><p>After every user the bed sheet changes automatically and UV light sterilises the bed. Disposable pyjamas are available if you do not have comfortable clothes.</p></div></div></div>
+      <div class="qa reveal"><button class="q" type="button" aria-expanded="false" aria-controls="a4" id="q4">Is it safe in a closed capsule?<span class="plus" aria-hidden="true"></span></button><div class="a" id="a4" role="region" aria-labelledby="q4"><div><p>We design in an emergency button and door release inside, ventilation and fire-safety checks, and no cameras. These are design requirements that still need technical and regulatory checks.</p></div></div></div>
+      <div class="qa reveal"><button class="q" type="button" aria-expanded="false" aria-controls="a5" id="q5">What will it cost?<span class="plus" aria-hidden="true"></span></button><div class="a" id="a5" role="region" aria-labelledby="q5"><div><p>Not decided yet. We plan a per-booking fee and semester passes, and we are using our student survey to set the prices.</p></div></div></div>
+      <div class="qa reveal"><button class="q" type="button" aria-expanded="false" aria-controls="a6" id="q6">What if I do not want music or scent?<span class="plus" aria-hidden="true"></span></button><div class="a" id="a6" role="region" aria-labelledby="q6"><div><p>Both are optional. Sound and scent are yours to switch on or off, and you can sleep in silence.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="sec deep foot" id="end">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="reveal">
+        <h2>Your next nap is <em>forty</em> minutes away.</h2>
+        <div class="cta-row"><a class="btn btn-gold" href="#planner">Plan a nap</a><a class="btn btn-ghost" href="#top">Back to top</a></div>
+      </div>
+      <p class="lead reveal" style="--d:.1s;margin-top:0">Campus Sleep Capsules is a student entrepreneurship project: private, soundproof, bookable beds for the gaps between classes.</p>
+    </div>
+    <div class="refs">
+      <h4>Sources</h4>
+      <ol>
+        <li>Altun, I., Çınar, N. and Dede, C. (2012) 'The contributing factors to poor sleep experiences in according to the university students: a cross-sectional study', Journal of Research in Medical Sciences, 17(6), pp. 557–561.</li>
+        <li>Dutheil, F. et al. (2021) 'Effects of a short daytime nap on the cognitive performance: a systematic review and meta-analysis', International Journal of Environmental Research and Public Health, 18(19), 10212.</li>
+        <li>Ergin, N. et al. (2022) 'Sleep quality and related factors including restless leg syndrome in medical students and residents in a Turkish university', Sleep and Breathing, 26.</li>
+        <li>Harding, E.C., Franks, N.P. and Wisden, W. (2019) 'The temperature dependence of sleep', Frontiers in Neuroscience, 13, 336.</li>
+        <li>Lovato, N., Lack, L. and Wright, H. (2014) 'The napping behaviour of Australian university students', PLoS ONE, 9(11), e113666.</li>
+        <li>NUS Medicine (2023) 'Take a 30-minute afternoon nap for a mid-day refresh and memory boost', 23 February.</li>
+        <li>Riedy, S.M. et al. (2021) 'Noise as a sleep aid: a systematic review', Sleep Medicine Reviews.</li>
+        <li>Rosekind, M.R. et al. (1995) 'Alertness management: strategic naps in operational settings', Journal of Sleep Research, 4(S2), pp. 62–66.</li>
+        <li>Shen, H., Zhang, L.-J. and Zhu, W.-Y. (2025) 'The sleep-enhancing effect of lavender essential oil in adults: a systematic review and meta-analysis', Holistic Nursing Practice, 40(2), pp. 105–118.</li>
+        <li>YÖK (2026) Yükseköğretim İstatistikleri 2025–2026, Bülten no. 6, 27 March.</li>
+      </ol>
+    </div>
+    <div class="legal"><span>A student concept project. No capsules are installed yet.</span><span>Designed with support from Claude (Anthropic); the team reviewed the content.</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function safe(fn){try{fn()}catch(e){if(window.console)console.error(e)}}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal on scroll */
+  safe(function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal,.seg-bar,.ringbox'));
+    if(!('IntersectionObserver' in window)){root.classList.add('no-reveal');els.forEach(function(e){e.classList.add('in')});return}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+  });
+  /* if the observer could not start, never leave content hidden */
+  setTimeout(function(){if(!document.querySelector('.reveal.in')&&window.scrollY===0&&!('IntersectionObserver' in window)){root.classList.add('no-reveal')}},3000);
+
+  /* progress */
+  safe(function(){
+    var bar=document.getElementById('progress'),tick=false;
+    function up(){tick=false;var h=document.documentElement.scrollHeight-window.innerHeight;bar.style.setProperty('--p',h>0?Math.min(1,window.scrollY/h):0)}
+    window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(up)}},{passive:true});up();
+  });
+
+  /* stars */
+  safe(function(){
+    var s=document.getElementById('stars'),h='';
+    for(var i=0;i<56;i++){var sz=(Math.random()*2+1).toFixed(1);h+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;top:'+(Math.random()*100).toFixed(1)+'%;width:'+sz+'px;height:'+sz+'px;--t:'+(3+Math.random()*4).toFixed(1)+'s;--dl:'+(Math.random()*4).toFixed(1)+'s"></i>'}
+    s.innerHTML=h;
+  });
+
+  /* hero parallax */
+  safe(function(){
+    if(reduce)return;
+    var art=document.getElementById('heroArt'),hero=document.getElementById('top');
+    var tx=0,ty=0,cx=0,cy=0,run=false;
+    function loop(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;art.style.transform='translate3d('+cx.toFixed(2)+'px,'+cy.toFixed(2)+'px,0)';if(Math.abs(tx-cx)>.05||Math.abs(ty-cy)>.05)requestAnimationFrame(loop);else run=false}
+    hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*-26;ty=((e.clientY-r.top)/r.height-.5)*-18;if(!run){run=true;requestAnimationFrame(loop)}});
+  });
+
+  /* today / capsule toggle */
+  safe(function(){
+    var card=document.getElementById('dayCard'),thumb=document.getElementById('segThumb'),note=document.getElementById('dayNote');
+    var btns=[].slice.call(card.querySelectorAll('.seg button'));
+    var notes={today:'The long gap becomes a long slump.',capsule:'The same gap, with a private place to recharge. You walk into class awake.'};
+    function place(){var b=card.querySelector('.seg button[aria-pressed="true"]');thumb.style.width=b.offsetWidth+'px';thumb.style.transform='translateX('+(b.offsetLeft-5)+'px)'}
+    btns.forEach(function(b){b.addEventListener('click',function(){btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});card.setAttribute('data-mode',b.dataset.mode);note.textContent=notes[b.dataset.mode];place()})});
+    place();window.addEventListener('resize',place);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(place);
+  });
+
+  /* counters */
+  safe(function(){
+    if(reduce||!('IntersectionObserver' in window))return;
+    var nums=[].slice.call(document.querySelectorAll('[data-count]'));
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,end=+el.dataset.count,t0=null;
+      function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400),v=Math.round(end*(1-Math.pow(1-p,3)));el.textContent=v;if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)})},{threshold:.6});
+    nums.forEach(function(n){var r=n.getBoundingClientRect();if(r.top>window.innerHeight){n.textContent='0'}io.observe(n)});
+  });
+
+  /* stage */
+  var info={
+    shell:{ic:'i-shield',t:'Soundproof shell',p:'A closed, insulated shell keeps campus noise out and gives you a space of your own.',l:['Quiet enough to fall asleep in the middle of campus','Private: nobody sees you rest']},
+    storage:{ic:'i-bag',t:'Storage under the bed',p:'A hatch under the bed holds your bag and belongings, so you can sleep without holding on to them.',l:['Your things stay close and out of sight']},
+    charging:{ic:'i-bolt',t:'Charging station',p:'A charging point inside the capsule for your phone or anything else that needs power.',l:['Leave with a full battery as well as a rested mind']},
+    sound:{ic:'i-sound',t:'Music and nature sounds',p:'Connect your own playlist by Bluetooth, or choose rain, a storm or other natural sounds. Sound is always optional.',l:['Bluetooth for your own music','Rain, storm and other nature sounds','Try them with the controls below the capsule']},
+    cooling:{ic:'i-snow',t:'Gentle cooling',p:'As you settle in, the air is lightly cooled to a comfortable sleep temperature.',l:['Falling asleep is tied to body temperature (Harding et al., 2019)']},
+    scent:{ic:'i-leaf',t:'Optional scent',p:'A light spray of lavender or forest air, only if you want it.',l:['Lavender aroma showed a sleep benefit in a meta-analysis (Shen et al., 2025)','Try the scents with the controls below']},
+    light:{ic:'i-sun',t:'Rising light, soft alarm, cushion vibration',p:'You wake in stages instead of being startled.',l:['The light rises slowly','A soft alarm sounds','The cushion gives a light pulse','Press Preview the wake-up to see it']},
+    clean:{ic:'i-spark',t:'Fresh sheet and UV after every use',p:'When you leave, the bed sheet is changed automatically and the bed is sterilised with UV light before the next student.',l:['UV runs only while the capsule is empty and locked','A new sheet for every user']},
+    cabin:{ic:'i-door',t:'Pyjamas and changing cabin',p:'No comfortable clothes with you? Single-use pyjamas are in the capsule, and a changing cabin sits next to it or near the toilets.',l:['Disposable pyjamas','A cabin to change in']}
+  };
+  var stage=document.getElementById('stage');
+  function show(key){
+    var d=info[key];if(!d)return;
+    stage.setAttribute('data-active',key);
+    [].forEach.call(stage.querySelectorAll('.hs'),function(b){b.setAttribute('aria-pressed',b.dataset.key===key?'true':'false')});
+    var body=document.getElementById('panelBody');
+    document.getElementById('pPic').innerHTML='<svg class="ico" aria-hidden="true"><use href="#'+d.ic+'"/></svg>';
+    document.getElementById('pTitle').textContent=d.t;document.getElementById('pText').textContent=d.p;
+    var ul=document.getElementById('pList');ul.innerHTML='';d.l.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li)});
+    body.classList.remove('swap');void body.offsetWidth;body.classList.add('swap');
+    syncFx();
+  }
+  function syncFx(){
+    stage.classList.toggle('sound-on',stage.dataset.sound!=='off');
+    stage.classList.toggle('scent-on',stage.dataset.scent!=='none'||stage.dataset.active==='scent');
+  }
+  safe(function(){
+    [].forEach.call(stage.querySelectorAll('.hs'),function(b){b.addEventListener('click',function(){show(b.dataset.key)})});
+    show('shell');
+  });
+
+  /* audio previews */
+  var AC=null,master=null,cur=null;
+  function ctx(){
+    if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(!C)return null;AC=new C();master=AC.createGain();master.gain.value=.45;master.connect(AC.destination)}
+    if(AC.state==='suspended')AC.resume();return AC;
+  }
+  function noise(type){
+    var len=AC.sampleRate*3,b=AC.createBuffer(1,len,AC.sampleRate),d=b.getChannelData(0),last=0;
+    for(var i=0;i<len;i++){var w=Math.random()*2-1;if(type==='brown'){last=(last+.02*w)/1.02;d[i]=last*3.5}else d[i]=w*.6}
+    return b;
+  }
+  function stopSound(){
+    if(!cur)return;var c=cur;cur=null;
+    c.timers.forEach(clearInterval);
+    try{c.gain.gain.cancelScheduledValues(AC.currentTime);c.gain.gain.setValueAtTime(c.gain.gain.value,AC.currentTime);c.gain.gain.linearRampToValueAtTime(0,AC.currentTime+.5)}catch(e){}
+    setTimeout(function(){c.nodes.forEach(function(n){try{n.stop()}catch(e){}});try{c.gain.disconnect()}catch(e){}},700);
+  }
+  function startSound(kind){
+    stopSound();if(kind==='off')return;
+    if(!ctx())return;
+    var g=AC.createGain();g.gain.value=0;g.connect(master);g.gain.linearRampToValueAtTime(1,AC.currentTime+1.2);
+    var nodes=[],timers=[];
+    function src(t){var s=AC.createBufferSource();s.buffer=noise(t);s.loop=true;s.start();nodes.push(s);return s}
+    function filt(type,f,q){var x=AC.createBiquadFilter();x.type=type;x.frequency.value=f;if(q)x.Q.value=q;return x}
+    function gn(v){var x=AC.createGain();x.gain.value=v;return x}
+    if(kind==='rain'||kind==='storm'){
+      var s=src('white'),hp=filt('highpass',kind==='storm'?700:1000),lp=filt('lowpass',7500),gg=gn(kind==='storm'?.3:.36);
+      s.connect(hp);hp.connect(lp);lp.connect(gg);gg.connect(g);
+    }
+    if(kind==='storm'){
+      var s2=src('brown'),l2=filt('lowpass',420),g2=gn(.55);s2.connect(l2);l2.connect(g2);g2.connect(g);
+      function thunder(){
+        if(!AC||!cur)return;
+        var t=AC.currentTime,s3=AC.createBufferSource();s3.buffer=noise('brown');var l3=filt('lowpass',170),g3=gn(0);
+        s3.connect(l3);l3.connect(g3);g3.connect(g);s3.start(t);
+        g3.gain.setValueAtTime(0,t);g3.gain.linearRampToValueAtTime(1.6,t+.5);g3.gain.exponentialRampToValueAtTime(.001,t+4.2);
+        s3.stop(t+4.5);
+      }
+      timers.push(setInterval(thunder,9000));setTimeout(thunder,2500);
+    }
+    if(kind==='waves'){
+      var s4=src('brown'),l4=filt('lowpass',900),g4=gn(.5),lfo=AC.createOscillator(),lg=gn(.4);
+      lfo.frequency.value=.11;lfo.connect(lg);lg.connect(g4.gain);lfo.start();nodes.push(lfo);
+      s4.connect(l4);l4.connect(g4);g4.connect(g);
+      var s5=src('white'),h5=filt('highpass',2500),g5=gn(.05),lg2=gn(.05);lfo.connect(lg2);lg2.connect(g5.gain);s5.connect(h5);h5.connect(g5);g5.connect(g);
+    }
+    cur={gain:g,nodes:nodes,timers:timers};
+  }
+  function chime(){
+    if(!ctx())return;var t=AC.currentTime;
+    [[523.25,0],[659.25,.45],[783.99,.9]].forEach(function(n){
+      var o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=n[0];o.connect(g);g.connect(master);
+      g.gain.setValueAtTime(0,t+n[1]);g.gain.linearRampToValueAtTime(.16,t+n[1]+.12);g.gain.exponentialRampToValueAtTime(.001,t+n[1]+1.8);
+      o.start(t+n[1]);o.stop(t+n[1]+2);
+    });
+  }
+  safe(function(){
+    var so=document.getElementById('soundOpts'),sc=document.getElementById('scentOpts'),vol=document.getElementById('vol'),wake=document.getElementById('wakeBtn');
+    function group(box,fn){[].forEach.call(box.querySelectorAll('button'),function(b){b.addEventListener('click',function(){[].forEach.call(box.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});fn(b.dataset.v)})})}
+    group(so,function(v){stage.dataset.sound=v;startSound(v);syncFx()});
+    group(sc,function(v){stage.dataset.scent=v;syncFx()});
+    vol.addEventListener('input',function(){if(master)master.gain.value=vol.value/100});
+    vol.addEventListener('change',function(){if(!AC)return});
+    var busy=false;
+    wake.addEventListener('click',function(){
+      if(busy)return;busy=true;wake.setAttribute('aria-pressed','true');wake.textContent='Waking…';
+      show('light');stage.classList.remove('waking');void stage.offsetWidth;stage.classList.add('waking');
+      setTimeout(chime,6200);
+      setTimeout(function(){stage.classList.remove('waking');busy=false;wake.setAttribute('aria-pressed','false');wake.textContent='Preview the wake-up'},11500);
+    });
+    window.addEventListener('pagehide',stopSound);
+  });
+
+  /* how it works */
+  safe(function(){
+    var steps=[].slice.call(document.querySelectorAll('.step')),scr=[].slice.call(document.querySelectorAll('.scr'));
+    function set(i){steps.forEach(function(s,k){s.classList.toggle('on',k===i)});scr.forEach(function(s,k){s.classList.toggle('on',k===i)})}
+    steps.forEach(function(s,k){s.addEventListener('click',function(){set(k)})});
+    if(!('IntersectionObserver' in window))return;
+    var narrow=window.matchMedia('(max-width:900px)');
+    function margin(){return narrow.matches?'-46% 0px -34% 0px':'-42% 0px -42% 0px'}
+    var io;
+    function build(){if(io)io.disconnect();io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(+e.target.dataset.s)})},{rootMargin:margin()});steps.forEach(function(s){io.observe(s)})}
+    build();if(narrow.addEventListener)narrow.addEventListener('change',build);
+  });
+
+  /* planner */
+  safe(function(){
+    var tEnd=document.getElementById('tEnd'),tNext=document.getElementById('tNext'),rng=document.getElementById('nStart');
+    var title=document.getElementById('rTitle'),text=document.getElementById('rText'),pill=document.getElementById('napPill'),buf=document.getElementById('buf'),lbl=document.getElementById('napLbl'),axL=document.getElementById('axL'),axR=document.getElementById('axR'),bar=document.getElementById('bar');
+    function toMin(v){var p=(v||'').split(':');return p.length<2||isNaN(+p[0])?null:(+p[0])*60+(+p[1])}
+    function fmt(m){m=((m%1440)+1440)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+    function dur(m){var h=Math.floor(m/60),r=m%60;return h?(r?h+' h '+r+' min':h+' h'):r+' min'}
+    var NAP=40,BUF=10;
+    function update(){
+      var a=toMin(tEnd.value),b=toMin(tNext.value);
+      if(a===null||b===null){title.textContent='Enter both times.';text.textContent='';return}
+      var gap=b-a;axL.textContent=fmt(a);axR.textContent=fmt(b);
+      if(gap<=0){title.textContent='The next class should start after this one ends.';text.textContent='Check the two times and try again.';pill.style.width='0';buf.style.width='0';rng.disabled=true;return}
+      var latest=gap-NAP-BUF;
+      buf.style.width=Math.max(0,BUF/gap*100)+'%';
+      if(latest<0){
+        rng.disabled=true;rng.max=0;rng.value=0;
+        pill.style.left='0%';pill.style.width=Math.max(6,Math.min(NAP,gap)/gap*100)+'%';lbl.textContent='40 min';
+        title.innerHTML='A gap of '+dur(gap)+' is <em>tight</em>.';
+        text.textContent='A 40-minute session plus a 10-minute walk needs at least 50 minutes. A capsule close to your classroom would make this gap work.';return;
+      }
+      rng.disabled=false;rng.max=latest;if(+rng.value>latest)rng.value=latest;
+      var v=+rng.value,st=a+v,en=st+NAP;
+      pill.style.left=(v/gap*100)+'%';pill.style.width=(NAP/gap*100)+'%';lbl.textContent=fmt(st)+'–'+fmt(en);
+      title.innerHTML='A gap of '+dur(gap)+'. Nap <em>'+fmt(st)+'–'+fmt(en)+'</em>.';
+      var before=v,after=gap-v-NAP-BUF;
+      text.textContent=(before?dur(before)+' before your nap':'You nap right after class')+(after>0?', then '+dur(after)+' free before you walk to class.':', then you walk to class.');
+    }
+    [tEnd,tNext,rng].forEach(function(x){x.addEventListener('input',update)});
+    document.getElementById('qEarly').addEventListener('click',function(){rng.value=0;update()});
+    document.getElementById('qLate').addEventListener('click',function(){rng.value=rng.max;update()});
+    update();
+  });
+
+  /* faq */
+  safe(function(){
+    [].forEach.call(document.querySelectorAll('.qa'),function(qa){var b=qa.querySelector('.q');b.addEventListener('click',function(){var o=qa.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')})});
+  });
+})();
+</script>
+</body></html>
